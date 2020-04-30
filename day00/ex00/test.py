@@ -1,0 +1,15 @@
+from vector import Vector
+a = Vector((10,15))
+b = Vector((5,10))
+v1 = Vector([0.0,1.0,2.0,3.0])
+v2 = v1 * 5
+print(v2)
+print(a.values)
+print(a.size)
+print(a)
+print(b)
+print((a * 2))
+print((a * b))
+print((a / 3))
+print(repr(a))
+print(str(a))

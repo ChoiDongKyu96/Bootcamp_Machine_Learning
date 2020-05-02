@@ -16,7 +16,7 @@
 	y_hat = theta_0 + theta_1*x 꼴에서 theta 와 x간에 dot_product으로 y_hat을 구할수 있게 만들기 때문입니다.
 	즉 차원을 확장하여 theta_0을 결과에 적용해주는것입니다.
 	y_hat = (1, x) * ((theta_0),
-					 (theta_1))
+			  (theta_1))
 	 == y_hat = theta_0 + theta_1*x 을 만들어주기 위함입니다.
 2 - Why does the cost function square the distances between the data points and their predicted values?
 	음수의 값이 나오질 않고 0에 가까울수록 값이 작아진다
@@ -28,8 +28,8 @@
 
 5 - Do you understand why are matrix multiplications are not commutative?
 	AB={a b} {e f}  = {ae+bg af+bh}
-		{c d}  {g h}     {ce+dg cf+dh}
+	   {c d}  {g h}   {ce+dg cf+dh}
 
 	BA={e f} {a b} = {ae+cf  be+df}
-		{g h} {c d}     {ag+ch bg+dh}
+	   {g h} {c d}   {ag+ch bg+dh}
 	따라서 두 행렬 A와 B의 곱은 일반적으로 교환법칙이 성립하지 않습니다.

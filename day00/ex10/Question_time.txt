@@ -19,7 +19,7 @@
 			  (theta_1))
 	 == y_hat = theta_0 + theta_1*x 을 만들어주기 위함입니다.
 2 - Why does the cost function square the distances between the data points and their predicted values?
-	음수의 값이 나오질 않고 0에 가까울수록 값이 작아진다
+	음수의 값이 나오질 않고 0에 가까울수록 cost 값이 더욱 작아집니다.
 3 - What does the cost function’s output represent?
 	실제 측정값과 예측값 사이의 차이를 반영합니다. 값이 높을수록 안좋은 예측값입니다.
 

@@ -6,7 +6,7 @@
 #    By: dochoi <dochoi@student.42seoul.kr>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/05/01 20:49:08 by dochoi            #+#    #+#              #
-#    Updated: 2020/05/01 22:05:59 by dochoi           ###   ########.fr        #
+#    Updated: 2020/05/01 22:24:37 by dochoi           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,13 +20,11 @@ def cost_elem_(y, y_hat):
     Returns: J_elem: numpy.ndarray, a vector of dimension (number of the training examples,1).
     None if there is a dimension matching problem between X, Y or theta.
     Raises: This function should not raise any Exception. """
-    dim = 2
     if y.ndim == 1:
         y = y[:,np.newaxis]
-        dim = 1
     if y.shape != y_hat.shape or len(y) == 0 or len(y_hat) ==0:
         return None
-    return ((y - y_hat) ** 2) / (dim * len(y))
+    return ((y - y_hat) ** 2) / (2 * len(y))
 
 def cost_(y, y_hat):
     """ Description: Calculates the value of cost function.
@@ -34,15 +32,13 @@ def cost_(y, y_hat):
     y: has to be an numpy.ndarray, a vector. y_hat: has to be an numpy.ndarray, a vector.
     Returns:
     J_value : has to be a float"""
-    dim = 2
     if y.ndim == 1:
         y = y[:,np.newaxis]
-        dim = 1
     if y_hat.ndim == 1:
         y_hat = y_hat[:,np.newaxis]
     if y.shape != y_hat.shape or len(y) == 0 or len(y_hat) ==0:
         return None
-    return np.squeeze(sum((y - y_hat) ** 2 / (dim * len(y))))
+    return np.squeeze(sum((y - y_hat) ** 2 / (2 * len(y))))
 
 def predict_(x, theta):
     """Computes the vector of prediction y_hat from two non-empty numpy.ndarray.

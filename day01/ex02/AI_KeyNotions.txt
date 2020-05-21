@@ -1,0 +1,29 @@
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    AI_KeyNotions.txt                                  :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: dochoi <dochoi@student.42seoul.kr>         +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2020/05/03 20:22:15 by dochoi            #+#    #+#              #
+#    Updated: 2020/05/03 20:24:19 by dochoi           ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
+
+1 - When we pre-process the training examples, why are we adding a column of ones to the left of the x vector (or X matrix)
+	when we use the linear algebra trick?
+
+	y_hat = theta_0 + theta_1*x 꼴에서 theta 와 x간에 dot_product으로 y_hat을 구할수 있게 만들기 때문입니다.
+즉 차원을 확장하여 theta_0을 결과에 적용해주는것입니다.
+y_hat = (1, x) * ((theta_0),
+          (theta_1))
+ == y_hat = theta_0 + theta_1*x 을 만들어주기 위함입니다.
+
+2 - Why does the cost function square the distance between the data points and their predicted values?
+	음수의 값이 나오질 않고 0에 가까울수록 cost 값이 더욱 작아집니다.
+
+3 - What does the cost function value represent?
+	실제 측정값과 예측값 사이의 차이를 반영합니다. 값이 높을수록 안좋은 예측값입니다.
+
+4 - Toward which value would you like the cost function to tend to? What would it mean?
+	cost가 0에 가까운 값을 반환하길 원합니다. 이는 예측이 실제와 거의 일치한다고 볼 수 있습니다.

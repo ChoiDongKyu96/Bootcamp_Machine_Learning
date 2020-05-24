@@ -6,7 +6,7 @@
 #    By: dochoi <dochoi@student.42seoul.kr>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/04/30 17:17:31 by dochoi            #+#    #+#              #
-#    Updated: 2020/05/03 20:56:46 by dochoi           ###   ########.fr        #
+#    Updated: 2020/05/24 17:25:14 by dochoi           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -50,7 +50,7 @@ def plot(x, y, theta):
         temp2.append(cost_(y,predict_(x, theta)))
     plt.plot(temp, temp2)
     # plt.plot(x, predict_(x, theta), color='orange')
-    plt.show()
+
 
 import numpy as np
 
@@ -62,3 +62,4 @@ plot(x, y, theta1)
 plot(x, y, theta2)
 theta3 = np.array([3, 0.3])
 plot(x, y, theta3)
+plt.show()

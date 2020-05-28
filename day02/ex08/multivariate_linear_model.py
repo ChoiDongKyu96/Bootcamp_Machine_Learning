@@ -144,7 +144,11 @@ mylr.fit_(x, y)
 # plt.legend(['Sell_price', 'Predicted sell_price'])
 # plt.grid()
 # plt.show()
-
+mylr = MyLinearRegression([[338.94317973],
+ [-22.67763021],
+ [  5.84252624],
+ [ -2.59281776]])
+mylr.fit_(x, y)
 plt.scatter(x_dist, y,color="purple", s=10)
 plt.xlabel('x1: Terameters (in Tmeters)')
 plt.ylabel('y : Sell_price(in kiloeuros)')

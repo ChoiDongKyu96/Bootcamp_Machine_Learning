@@ -1,20 +1,20 @@
 # **************************************************************************** #
 #                                                                              #
 #                                                         :::      ::::::::    #
-#    polynomial_model.py                                :+:      :+:    :+:    #
+#    test.py                                            :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
 #    By: dochoi <dochoi@student.42seoul.kr>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2020/05/27 16:40:41 by dochoi            #+#    #+#              #
-#    Updated: 2020/05/27 16:40:45 by dochoi           ###   ########.fr        #
+#    Created: 2020/05/29 01:17:02 by dochoi            #+#    #+#              #
+#    Updated: 2020/05/29 01:17:44 by dochoi           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 import numpy as np
 
-def add_polynomial_features(x, power):
-    temp = x.copy()
-    for i in range(2, power + 1):
-        temp = np.append(temp, np.power(x, i), axis=1 )
-    return temp
-	
+y = np.array([[4], [7.16], [3.2], [9.37], [0.56]])
+ones = np.ones(y.shape[0	]).reshape((-1,1))
+print(ones - y)
+
+y = np.array([[4], [7.16], [3.2], [9.37], [0.56]])
+print(1 - y)

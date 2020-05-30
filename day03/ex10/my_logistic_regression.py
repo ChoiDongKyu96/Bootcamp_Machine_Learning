@@ -6,7 +6,7 @@
 #    By: dochoi <dochoi@student.42seoul.kr>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/05/30 02:00:53 by dochoi            #+#    #+#              #
-#    Updated: 2020/05/30 02:55:53 by dochoi           ###   ########.fr        #
+#    Updated: 2020/05/30 17:27:02 by dochoi           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,7 @@ import math
 class MyLogisticRegression(object):
     """ Description: My personnal logistic regression to classify things. """
 
-    def __init__(self, thetas, alpha=0.001, n_cycle=1000):
+    def __init__(self, thetas, alpha=0.003, n_cycle=30000):
         self.alpha = alpha
         self.n_cycle = n_cycle
         self.thetas = np.array(thetas, dtype=float).reshape(-1, 1)
@@ -32,7 +32,7 @@ class MyLogisticRegression(object):
     def log_gradient(self, x, y):
         if len(x) == 0 or len(y) == 0 or len(self.thetas) == 0:
             return None
-        return self.add_intercept(x).T @ (self.predict_(x) - y) / len(x)
+        return np.sum(self.add_intercept(x).T @ (self.predict_(x) - y) / len(x),axis=1).reshape(-1,1)
 
     def fit_(self, x, y):
         if len(x) == 0 or len(y) == 0 or len(self.thetas) == 0:
@@ -51,5 +51,6 @@ class MyLogisticRegression(object):
     def cost_(self, x, y, eps=1e-15):
         y_hat = self.predict_(x) - eps
         if (y.shape != y_hat.shape or len(y) == 0 or len(y_hat) == 0):
+
             return None
         return -sum((y * np.log(y_hat)) + ((1 - y) * np.log(1 - y_hat)) ).squeeze() / len(y_hat)

@@ -38,7 +38,7 @@ def log_loss_(y, y_hat, eps=1e-15):
         return math.log(x)
     def func2(x):
         return (math.log(1 - x))
-    y_hat = y_hat + eps
+    y_hat = y_hat - eps
     y_hat_log = np.vectorize(func)(y_hat)
     y_hat_log_inv = np.vectorize(func2)(y_hat)
     return -sum(y * y_hat_log + (1 - y) * y_hat_log_inv)  / len(y_hat)

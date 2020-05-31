@@ -6,7 +6,7 @@
 #    By: dochoi <dochoi@student.42seoul.kr>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/05/30 02:56:12 by dochoi            #+#    #+#              #
-#    Updated: 2020/05/30 18:03:49 by dochoi           ###   ########.fr        #
+#    Updated: 2020/06/01 00:21:02 by dochoi           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,6 +27,14 @@ def zscore(x):
     var = temp
     std = np.sqrt(var/ (len(x) - 1))
     return (x - mu) / std
+
+def accuracy_score_(y, y_hat):
+    """ Compute the accuracy score.
+    Args:
+    y:a numpy.ndarray for the correct labels y_hat:a numpy.ndarray for the predicted labels
+    Returns: The accuracy score as a float. None on any error.
+    Raises: This function should not raise any Exception. """
+    return np.count_nonzero(y==y_hat) / float(len(y))
 
 csv_data_x = pd.read_csv("../resources/solar_system_census.csv")
 
@@ -81,7 +89,6 @@ mylr2 = MyLR([[-2.58616195],
  [ 2.8277886 ],
  [ 0.32890994]]) # Mars Republic (2)
 mylr2.fit_(x_train, y_train2)
-mylr2.fit_(x_train, y_train2)
 mylr2.alpha = 0.03
 mylr2.fit_(x_train, y_train2)
 mylr2.alpha = 0.3
@@ -91,12 +98,12 @@ mylr3 = MyLR([[-4.41035678],
  [ 4.24667587],
  [-3.76787019],
  [-5.23183696]]) # The Asteroids’ Belt colonies (3).
-mylr3.fit_(x_train, y_train0)
-mylr3.alpha = 0.03
-mylr3.fit_(x_train, y_train0)
-mylr3.alpha = 0.3
-mylr3.fit_(x_train, y_train0)
 mylr3.fit_(x_train, y_train3)
+mylr3.alpha = 0.03
+mylr3.fit_(x_train, y_train3)
+mylr3.alpha = 0.3
+mylr3.fit_(x_train, y_train3)
+
 
 print(mylr0.thetas)
 print(mylr1.thetas)
@@ -109,7 +116,6 @@ y_hat1 = mylr1.predict_(x)
 y_hat2 = mylr2.predict_(x)
 y_hat3 = mylr3.predict_(x)
 
-
 y_hat_total = np.append(y_hat0, y_hat1, axis=1)
 y_hat_total = np.append(y_hat_total, y_hat2, axis=1)
 y_hat_total = np.append(y_hat_total, y_hat3, axis=1)
@@ -120,6 +126,7 @@ for i in range(len(y_hat_total)):
     y_hat_pre_all = np.append(y_hat_pre_all, np.argmax(y_hat_total[i]))
 
 y_hat_pre_all = y_hat_pre_all.reshape(-1,1)
+print(accuracy_score_(y , y_hat_pre_all))
 # 시각화
 y_n = np.array([0.,0.,0.,0.])
 for i in range(len(y)):

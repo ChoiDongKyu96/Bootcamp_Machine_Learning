@@ -6,7 +6,7 @@
 #    By: dochoi <dochoi@student.42seoul.kr>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/05/30 02:00:53 by dochoi            #+#    #+#              #
-#    Updated: 2020/05/31 19:01:03 by dochoi           ###   ########.fr        #
+#    Updated: 2020/06/01 01:33:40 by dochoi           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,14 +18,12 @@ import math
 class MyLogisticRegression(object):
     """ Description: My personnal logistic regression to classify things. """
 
-    def __init__(self, thetas, alpha=0.001, n_cycle=1000, penalty='l2', , lambda_=0.5):
+    def __init__(self, thetas, alpha=0.0001, n_cycle=5000, penalty='l2', lambda_=0.5):
         self.alpha = alpha
         self.n_cycle = n_cycle
         self.penalty=penalty
         self.thetas = np.array(thetas, dtype=float).reshape(-1, 1)
         self.lambda_ = lambda_
-
-
 
     def l2(self, theta):
         if len(theta) == 0:
@@ -46,7 +44,7 @@ class MyLogisticRegression(object):
             return None
         if self.penalty == 'l2':
             answer = self.add_intercept(x).T @ (self.predict_(x) - y) + (self.lambda_ * self.thetas)
-            answer[0] -= self.lambda_ * self.self.thetas[0]
+            answer[0] -= self.lambda_ * self.thetas[0]
             return answer / len(x)
         else:
             return np.sum(self.add_intercept(x).T @ (self.predict_(x) - y) / len(x),axis=1).reshape(-1,1)
@@ -66,10 +64,10 @@ class MyLogisticRegression(object):
         return 1 / (1 + pow(math.e, -self.add_intercept(x) @ self.thetas))
 
     def cost_(self, x, y, eps=1e-15):
-        if (y.shape != y_hat.shape or len(y) == 0 or len(y_hat) == 0):
+        if (len(y) != len(x) or len(y) == 0 or len(x) == 0):
             return None
         y_hat = self.predict_(x) - eps
         if self.penalty == 'l2':
-            return -sum((y * np.log(y_hat)) + ((1 - y) * np.log(1 - y_hat)) ).squeeze() / len(y_hat) + (lambda_ * l2(theta)/(2 * len(y_hat)))
+            return -sum((y * np.log(y_hat)) + ((1 - y) * np.log(1 - y_hat)) ).squeeze() / len(y_hat) + (self.lambda_ * self.l2(self.thetas)/(2 * len(y_hat)))
         else :
             return -sum((y * np.log(y_hat)) + ((1 - y) * np.log(1 - y_hat)) ).squeeze() / len(y_hat)

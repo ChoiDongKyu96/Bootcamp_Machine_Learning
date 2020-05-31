@@ -6,7 +6,7 @@
 #    By: dochoi <dochoi@student.42seoul.kr>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/05/30 02:00:53 by dochoi            #+#    #+#              #
-#    Updated: 2020/05/30 17:27:02 by dochoi           ###   ########.fr        #
+#    Updated: 2020/05/31 23:40:32 by dochoi           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,7 @@ import math
 class MyLogisticRegression(object):
     """ Description: My personnal logistic regression to classify things. """
 
-    def __init__(self, thetas, alpha=0.003, n_cycle=30000):
+    def __init__(self, thetas, alpha=0.003, n_cycle=10000):
         self.alpha = alpha
         self.n_cycle = n_cycle
         self.thetas = np.array(thetas, dtype=float).reshape(-1, 1)
